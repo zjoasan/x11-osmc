@@ -19,3 +19,4 @@ sudo chmod 777 /etc/alternatives/desktop-background
 xbmc-send -a "UpdateLocalAddons" >/dev/null
 dialog --title "Installation finnished!" --msgbox "\nThank you for using my installer\n"  11 70
 exit
+
