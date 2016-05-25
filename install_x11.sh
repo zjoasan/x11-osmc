@@ -1,6 +1,6 @@
 #!/bin/bash
 sudo apt-get update 2>&1 | dialog --title "Updating package database..." --infobox "\nPlease wait...\n" 11 70
-sudo apt-get --show-progress -y install lxde-core xserver-xorg xinitand  2>&1 | grep --line-buffered -oP "(\d+(\.\d+)?(?=%))" | dialog --title "Installing X11 and LXDE-core" --gauge "\nPlease wait...\n" 11 70
+sudo apt-get --show-progress -y install lxde-core xserver-xorg xinit  2>&1 | grep --line-buffered -oP "(\d+(\.\d+)?(?=%))" | dialog --title "Installing X11 and LXDE-core" --gauge "\nPlease wait...\n" 11 70
 dialog --title "Download and install" --infobox "\nDownloading chromium and installing\n"  11 70
 wget http://ftp.us.debian.org/debian/pool/main/libg/libgcrypt11/libgcrypt11_1.5.0-5+deb7u4_armhf.deb
 wget http://launchpadlibrarian.net/218525709/chromium-browser_45.0.2454.85-0ubuntu0.14.04.1.1097_armhf.deb
