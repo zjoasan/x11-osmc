@@ -11,21 +11,21 @@ dialog --title "Download and install" --infobox "\nDownloading chromium and inst
 wget -q http://ftp.us.debian.org/debian/pool/main/libg/libgcrypt11/libgcrypt11_1.5.0-5+deb7u4_armhf.deb
 wget -q http://launchpadlibrarian.net/218525709/chromium-browser_45.0.2454.85-0ubuntu0.14.04.1.1097_armhf.deb
 wget -q http://launchpadlibrarian.net/218525711/chromium-codecs-ffmpeg-extra_45.0.2454.85-0ubuntu0.14.04.1.1097_armhf.deb
-sudo dpkg -q -i libgcrypt11_1.5.0-5+deb7u4_armhf.deb
-sudo dpkg -q -i chromium-codecs-ffmpeg-extra_45.0.2454.85-0ubuntu0.14.04.1.1097_armhf.deb
-sudo dpkg -q -i chromium-browser_45.0.2454.85-0ubuntu0.14.04.1.1097_armhf.deb
+sudo dpkg -q -i libgcrypt11_1.5.0-5+deb7u4_armhf.deb 2>&1
+sudo dpkg -q -i chromium-codecs-ffmpeg-extra_45.0.2454.85-0ubuntu0.14.04.1.1097_armhf.deb 2>&1
+sudo dpkg -q -i chromium-browser_45.0.2454.85-0ubuntu0.14.04.1.1097_armhf.deb 2>&1
 if [ $? -gt 0 ]; then
 apt-get -f --force-yes --yes install >/dev/null 2>&1
 fi
-sudo dpkg -q -i chromium-browser_45.0.2454.85-0ubuntu0.14.04.1.1097_armhf.deb
+sudo dpkg -q -i chromium-browser_45.0.2454.85-0ubuntu0.14.04.1.1097_armhf.deb 2>&1
 dialog --title "Download and install" --infobox "\nDownloading launcher and installing\n"  11 70
-wget -q https://github.com/zjoasan/x11-osmc/raw/master/install_x11.zip
-unzip -q -o install_x11.zip
-chmod +x /home/osmc/x11-start/x_init.sh
-chmod +x /home/osmc/x11-start/xstart.sh
+wget -q https://github.com/zjoasan/x11-osmc/raw/master/install_x11.zip 2>&1
+unzip -q -o install_x11.zip 2>&1
+chmod +x /home/osmc/x11-start/x_init.sh 2>&1
+chmod +x /home/osmc/x11-start/xstart.sh 2>&1
 dialog --title "Post setup tweaks" --infobox "\nChangeing default background in X11 and adding a few desktop shortcuts\nFinally updating Kodi addons to reflext X11 launcher"  11 70
-sudo ln /usr/splash.png /etc/alternatives/desktop-background
-sudo chmod 777 /etc/alternatives/desktop-background
+sudo ln /usr/splash.png /etc/alternatives/desktop-background 2>&1
+sudo chmod 777 /etc/alternatives/desktop-background 2>&1
 xbmc-send -a "UpdateLocalAddons" >/dev/null
 dialog --title "Installation finnished!" --msgbox "\nThank you for using my installer\n"  11 70
 exit
