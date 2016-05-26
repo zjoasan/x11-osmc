@@ -18,7 +18,7 @@ apt-get -f --force-yes --yes install >/dev/null 2>&1
 fi
 sudo dpkg -i chromium-browser_45.0.2454.85-0ubuntu0.14.04.1.1097_armhf.deb
 dialog --title "Download and install" --infobox "\nDownloading launcher and installing\n"  11 70
-wget https://github.com/zjoasan/x11-osmc/raw/master/install_x11.zip
+wget -q https://github.com/zjoasan/x11-osmc/raw/master/install_x11.zip
 unzip -q -o install_x11.zip
 chmod +x /home/osmc/x11-start/x_init.sh
 chmod +x /home/osmc/x11-start/xstart.sh
