@@ -11,9 +11,9 @@ dialog --title "Download and install" --infobox "\nDownloading chromium and inst
 wget -q http://ftp.us.debian.org/debian/pool/main/libg/libgcrypt11/libgcrypt11_1.5.0-5+deb7u4_armhf.deb
 wget -q http://launchpadlibrarian.net/218525709/chromium-browser_45.0.2454.85-0ubuntu0.14.04.1.1097_armhf.deb
 wget -q http://launchpadlibrarian.net/218525711/chromium-codecs-ffmpeg-extra_45.0.2454.85-0ubuntu0.14.04.1.1097_armhf.deb
-sudo dpkg -q -i libgcrypt11_1.5.0-5+deb7u4_armhf.deb 2>&1
-sudo dpkg -q -i chromium-codecs-ffmpeg-extra_45.0.2454.85-0ubuntu0.14.04.1.1097_armhf.deb 2>&1
-sudo dpkg -q -i chromium-browser_45.0.2454.85-0ubuntu0.14.04.1.1097_armhf.deb 2>&1
+sudo dpkg -i libgcrypt11_1.5.0-5+deb7u4_armhf.deb 2>&1
+sudo dpkg -i chromium-codecs-ffmpeg-extra_45.0.2454.85-0ubuntu0.14.04.1.1097_armhf.deb 2>&1
+sudo dpkg -i chromium-browser_45.0.2454.85-0ubuntu0.14.04.1.1097_armhf.deb 2>&1
 if [ $? -gt 0 ]; then
 apt-get -f --force-yes --yes -q install >/dev/null 2>&1
 fi
