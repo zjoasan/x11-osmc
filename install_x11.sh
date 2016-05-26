@@ -1,6 +1,7 @@
 #!/bin/bash
 sudo apt-get update 2>&1 | dialog --title "Updating package database..." --infobox "\nPlease wait...\n" 11 70
-sudo apt-get -q install lxde-core xserver-xorg xinit  2>&1 | dialog --title "Trying install x11" --infobox "\nPlease wait...\n" 11 70
+dialog --title "Trying install x11" --infobox "\nPlease wait...\n" 11 70
+sudo apt-get -q install lxde-core xserver-xorg xinit  2>&1 
 if [ $? -gt 0 ]; then
 apt-get -f -q --force-yes --yes install >/dev/null 2>&1 | dialog --title "Forceing install of dependences" --infobox "\nPlease wait...\n" 11 70
 fi
