@@ -15,6 +15,7 @@ sudo dpkg -i libgcrypt11_1.5.0-5+deb7u4_armhf.deb 2>&1
 sudo dpkg -i chromium-codecs-ffmpeg-extra_45.0.2454.85-0ubuntu0.14.04.1.1097_armhf.deb 2>&1
 sudo dpkg -i chromium-browser_45.0.2454.85-0ubuntu0.14.04.1.1097_armhf.deb 2>&1
 if [ $? -gt 0 ]; then
+dialog --title "Installing dependencies..." --infobox "\nPlease wait...\n" 11 70
 apt-get -f --force-yes --yes install >/dev/null 2>&1
 sudo dpkg -i chromium-browser_45.0.2454.85-0ubuntu0.14.04.1.1097_armhf.deb 2>&1
 fi
