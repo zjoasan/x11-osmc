@@ -16,7 +16,7 @@ sudo dpkg -i chromium-codecs-ffmpeg-extra_45.0.2454.85-0ubuntu0.14.04.1.1097_arm
 sudo dpkg -i chromium-browser_45.0.2454.85-0ubuntu0.14.04.1.1097_armhf.deb 2>&1
 if [ $? -gt 0 ]; then
 dialog --title "Installing dependencies..." --infobox "\nPlease wait...\n" 11 70
-apt-get -f --force-yes --yes install >/dev/null 2>&1
+sudo apt-get -f --force-yes --yes install >/dev/null 2>&1
 sudo dpkg -i chromium-browser_45.0.2454.85-0ubuntu0.14.04.1.1097_armhf.deb 2>&1
 fi
 dialog --title "Download and install" --infobox "\nDownloading launcher and installing\n"  11 70
