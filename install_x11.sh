@@ -3,7 +3,7 @@ sudo apt-get update 2>&1 | dialog --title "Updating package database..." --infob
 
 dialog --title "Installing X11 and LXDE-core" --infobox "\nThise will take some time so please wait...\n" 11 70
 
-sudo apt-get -y install lxde-core xserver-xorg xinit fbi
+sudo apt-get -y install lxde-core xserver-xorg xinit fbi gconf-service libgconf-2-4 libnspr4 libnspr4-0d libnss3 libnss3-1d libxss1 libnss3 xdg-utils
 dialog --title "Download and install" --infobox "\nDownloading chromium and installing\n" 11 70
 
 wget -q http://ftp.us.debian.org/debian/pool/main/libg/libgcrypt11/libgcrypt11_1.5.0-5+deb7u4_armhf.deb
