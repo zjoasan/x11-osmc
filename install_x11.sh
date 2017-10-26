@@ -1,4 +1,12 @@
 #!/bin/bash
+       if [ "$(id -u)" != "1000" ]; then
+                echo
+                echo "This script must be run as osmc user." 1>&2
+                echo
+                exit 1
+        fi
+
+
 sudo apt-get update 2>&1 | dialog --title "Updating package database..." --infobox "\nPlease wait...\n" 11 70
 
 dialog --title "Installing X11 and LXDE-core" --infobox "\nThise will take some time so please wait...\n" 11 70
