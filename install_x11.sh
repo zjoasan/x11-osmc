@@ -9,22 +9,12 @@
 
 sudo apt-get update 2>&1 | dialog --title "Updating package database..." --infobox "\nPlease wait...\n" 11 70
 
-dialog --title "Installing X11 and LXDE-core" --infobox "\nThise will take some time so please wait...\n" 11 70
+dialog --title "Installing X11, LXDE-core and Chromium" --infobox "\nThise will take some time so please wait...\n" 11 70
 
-sudo apt-get -y install lxde-core xserver-xorg xinit fbi gconf-service libgconf-2-4 libnspr4 libnspr4-0d libnss3 libnss3-1d libxss1 libnss3 xdg-utils
-dialog --title "Download and install" --infobox "\nDownloading chromium and installing\n" 11 70
-
-wget -q http://ftp.us.debian.org/debian/pool/main/libg/libgcrypt11/libgcrypt11_1.5.0-5+deb7u4_armhf.deb
-wget -q http://dl.bintray.com/kusti8/chromium-rpi/pool/main/c/chromium-codecs-ffmpeg-extra/chromium-codecs-ffmpeg-extra_51.0.2704.79-0ubuntu0.14.04.1.1121_armhf.deb
-wget -q http://dl.bintray.com/kusti8/chromium-rpi/pool/main/c/chromium-browser/chromium-browser_51.0.2704.79-0ubuntu0.14.04.1.1121_armhf.deb
-sudo dpkg -i libgcrypt11_1.5.0-5+deb7u4_armhf.deb 2>&1
-sudo dpkg -i chromium-codecs-ffmpeg-extra_51.0.2704.79-0ubuntu0.14.04.1.1121_armhf.deb 2>&1
-sudo dpkg -i chromium-browser_51.0.2704.79-0ubuntu0.14.04.1.1121_armhf.deb 2>&1
+sudo apt-get -y install lxde-core xserver-xorg xinit fbi chromium 
 if [ $? -gt 0 ]; then
 dialog --title "Installing dependencies..." --infobox "\nPlease wait...\n" 11 70
-
 sudo apt-get -f --force-yes --yes install >/dev/null 2>&1
-sudo dpkg -i chromium-browser_51.0.2704.79-0ubuntu0.14.04.1.1121_armhf.deb 2>&1
 fi
 dialog --title "Download and install" --infobox "\nDownloading launcher and installing\n" 11 70
 
@@ -37,6 +27,12 @@ dialog --title "Post setup tweaks" --infobox "\nChangeing default background in 
 sudo ln /usr/splash.png /etc/alternatives/desktop-background 2>&1
 sudo chmod 777 /etc/alternatives/desktop-background 2>&1
 xbmc-send -a "UpdateLocalAddons" >/dev/null
+# enable the addon
+sqlite3 /home/osmc/.kodi/userdata/Database/Addons27.db "UPDATE installed SET enabled = 1 WHERE addonID = 'plugin.program.x11-launcher'"
+
+#update the kodi addon db again, so it's enabled
+xbmc-send -a "UpdateLocalAddons"
+
 dialog --title "Installation finnished!" --msgbox "\nThank you for using my installer\n" 11 70
 exit
 
