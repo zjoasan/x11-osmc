@@ -26,12 +26,6 @@ dialog --title "Post setup tweaks" --infobox "\nChangeing default background in 
 
 sudo ln /usr/splash.png /etc/alternatives/desktop-background 2>&1
 sudo chmod 777 /etc/alternatives/desktop-background 2>&1
-xbmc-send -a "UpdateLocalAddons" >/dev/null
-# enable the addon
-sqlite3 /home/osmc/.kodi/userdata/Database/Addons27.db "UPDATE installed SET enabled = 1 WHERE addonID = 'plugin.program.x11-launcher'"
-
-#update the kodi addon db again, so it's enabled
-xbmc-send -a "UpdateLocalAddons"
 
 dialog --title "Installation finnished!" --msgbox "\nThank you for using my installer\n" 11 70
 exit
