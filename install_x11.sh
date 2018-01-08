@@ -11,7 +11,7 @@ sudo apt-get update 2>&1 | dialog --title "Updating package database..." --infob
 
 dialog --title "Installing X11, LXDE-core and Chromium" --infobox "\nThise will take some time so please wait...\n" 11 70
 
-sudo apt-get -y install lxde-core xserver-xorg xinit fbi chromium 
+sudo apt-get -y install lxde-core xserver-xorg xinit fbi chromium libinput-dev
 if [ $? -gt 0 ]; then
 dialog --title "Installing dependencies..." --infobox "\nPlease wait...\n" 11 70
 sudo apt-get -f --force-yes --yes install >/dev/null 2>&1
