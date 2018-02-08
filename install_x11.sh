@@ -23,6 +23,8 @@ unzip -q -o install_x11.zip 2>&1
 chmod +x /home/osmc/x11-start/x_init.sh 2>&1
 chmod +x /home/osmc/x11-start/xstart.sh 2>&1
 dialog --title "Post setup tweaks" --infobox "\nChangeing default background in X11 and updating Kodi addons \nto reflect X11 launcher" 11 70
+sudo rm /usr/share/applications/kodi.desktop
+sudo rm /usr/share/xsessions/kodi.desktop
 
 sudo ln /usr/splash.png /etc/alternatives/desktop-background 2>&1
 sudo chmod 777 /etc/alternatives/desktop-background 2>&1
