@@ -12,7 +12,12 @@ sudo apt-get update 2>&1 | dialog --title "Updating package database..." --infob
 dialog --title "Installing X11, LXDE-core and Chromium" --infobox "\nThise will take some time so please wait...\n" 11 70
 
 sudo apt-get -y install lxde-core xserver-xorg xinit fbi libinput-dev
-sudo apt-get install chromium=63.0.3239.84-1~deb9u1
+wget http://launchpadlibrarian.net/380369885/chromium-codecs-ffmpeg-extra_68.0.3440.75-0ubuntu0.16.04.1_armhf.deb
+wget http://launchpadlibrarian.net/380369879/chromium-browser_68.0.3440.75-0ubuntu0.16.04.1_armhf.deb
+sudo dpkg -i chromium-codecs-ffmpeg-extra_68.0.3440.75-0ubuntu0.16.04.1_armhf.deb
+sudo dpkg -i chromium-browser_68.0.3440.75-0ubuntu0.16.04.1_armhf.deb
+sudo apt --fix-broken install
+sudo dpkg -i chromium-browser_68.0.3440.75-0ubuntu0.16.04.1_armhf.deb
 if [ $? -gt 0 ]; then
 dialog --title "Installing dependencies..." --infobox "\nPlease wait...\n" 11 70
 sudo apt-get -f --force-yes --yes install >/dev/null 2>&1
@@ -32,5 +37,6 @@ sudo chmod 777 /etc/alternatives/desktop-background 2>&1
 xbmc-send -a "UpdateLocalAddons"
 
 dialog --title "Installation finnished!" --msgbox "\nThank you for using my installer\n" 11 70
+sudo systemctl disable lightdm
 exit
 
