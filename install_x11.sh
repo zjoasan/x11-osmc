@@ -11,7 +11,7 @@ sudo apt-get update 2>&1 | dialog --title "Updating package database..." --infob
 
 dialog --title "Installing X11, LXDE-core and Chromium" --infobox "\nThise will take some time so please wait...\n" 11 70
 
-sudo apt-get -y install lxde-core xserver-xorg xinit fbi libinput-dev xwit xdotool x11-utils xvkbd
+sudo apt-get -y install lxde-core xserver-xorg xinit fbi libinput-dev xwit xdotool x11-utils xvkbd zenity xterm
 wget http://launchpadlibrarian.net/380369885/chromium-codecs-ffmpeg-extra_68.0.3440.75-0ubuntu0.16.04.1_armhf.deb
 wget http://launchpadlibrarian.net/380369879/chromium-browser_68.0.3440.75-0ubuntu0.16.04.1_armhf.deb
 sudo dpkg -i chromium-codecs-ffmpeg-extra_68.0.3440.75-0ubuntu0.16.04.1_armhf.deb
