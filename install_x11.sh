@@ -54,6 +54,7 @@ if (( $(ps -ef | grep -v grep | grep "mediacenter" | wc -l) > 0 )); then
 fi
 
 dialog --title "Installation finished!" --msgbox "\nThank you for using my installer\n" 11 70
+sleep 5
 if (( $(ps -ef | grep -v grep | grep "lightdm" | wc -l) > 0 )); then
        sudo systemctl disable lightdm
 fi
