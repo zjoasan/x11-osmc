@@ -10,7 +10,7 @@
 export LANGUAGE="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
-sudo locale-gen en_US.UTF-8
+sudo locale-gen en_US.UTF-8 &> /dev/null
 
 #Tell ncurses to use line characters that work with UTF-8.
 export NCURSES_NO_UTF8_ACS=1
@@ -54,8 +54,13 @@ if (( $(ps -ef | grep -v grep | grep "mediacenter" | wc -l) > 0 )); then
 fi
 
 dialog --title "Installation finished!" --msgbox "\nThank you for using my installer\n" 11 70
+<<<<<<< HEAD
 sleep 5
 if (( $(ps -ef | grep -v grep | grep "lightdm" | wc -l) > 0 )); then
+=======
+if (( $(dpkg -s lightdm | grep ‘Status: install ok installed’| wc -l) > 0 )); then
+       sudo systemctl stop lightdm
+>>>>>>> dc3c8256608e41f48749266b6c9987d5b6ba9ec6
        sudo systemctl disable lightdm
 fi
 exit
