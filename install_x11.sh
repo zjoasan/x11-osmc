@@ -50,6 +50,8 @@ sudo chmod 777 /etc/alternatives/desktop-background 2>&1
 
 if (( $(pgrep -c "mediacenter") > 0 )); then
        xbmc-send -a "UpdateLocalAddons"
+       # let the db work for a bit
+       sleep 2
        kodipath=/home/osmc/.kodi/userdata
        addonpath=/home/osmc/.kodi/addons
        pkgpath=$addonpath/packages
