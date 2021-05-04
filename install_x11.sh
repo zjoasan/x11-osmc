@@ -50,6 +50,11 @@ sudo chmod 777 /etc/alternatives/desktop-background 2>&1
 
 if (( $(pgrep -c "mediacenter") > 0 )); then
        xbmc-send -a "UpdateLocalAddons"
+       kodipath=/home/osmc/.kodi/userdata
+       addonpath=/home/osmc/.kodi/addons
+       pkgpath=$addonpath/packages
+       dbpath=$kodipath/Database
+       sqlite3 $dbpath/Addons33.db "UPDATE installed SET enabled = 1 WHERE addonID = 'plugin.program.x11-launcher'"
 fi
 
 dialog --title "Installation finished!" --msgbox "\nThank you for using my installer\n" 11 70
