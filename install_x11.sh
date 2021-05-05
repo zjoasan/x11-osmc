@@ -1,4 +1,10 @@
 #!/bin/bash
+#some error logging
+exec 3>&1 4>&2
+trap 'exec 2>&4 1>&3' 0 1 2 3
+exec 1>install_x11_log.txt 2>&1
+#will be remarked after it's working
+
 if [ "$(id -u)" != "1000" ]; then
        echo
        echo "This script must be run as osmc user." 1>&2
