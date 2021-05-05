@@ -57,6 +57,9 @@ if (( $(pgrep -c "mediacenter") > 0 )); then
        pkgpath=$addonpath/packages
        dbpath=$kodipath/Database
        sqlite3 $dbpath/Addons33.db "UPDATE installed SET enabled = 1 WHERE addonID = 'plugin.program.x11-launcher'"
+       sleep 2
+       xbmc-send -a "UpdateLocalAddons"
+       sleep 2
 fi
 
 dialog --title "Installation finished!" --msgbox "\nThank you for using my installer\n" 11 70
