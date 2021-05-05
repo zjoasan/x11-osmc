@@ -1,8 +1,8 @@
 #!/bin/bash
 #some error logging
-exec 3>&1 4>&2
-trap 'exec 2>&4 1>&3' 0 1 2 3
-exec 1>install_x11_log.txt 2>&1
+#exec 3>&1 4>&2
+#trap 'exec 2>&4 1>&3' 0 1 2 3
+#exec 1>install_x11_log.txt 2>&1
 #will be remarked after it's working
 
 if [ "$(id -u)" != "1000" ]; then
@@ -54,16 +54,13 @@ sudo rm /usr/share/xsessions/kodi.desktop
 
 sudo ln /usr/splash.png /etc/alternatives/desktop-background 2>&1
 sudo chmod 777 /etc/alternatives/desktop-background 2>&1
-
-if (( $(pgrep -c "mediacenter") > 0 )); then
-       xbmc-send -a "UpdateLocalAddons"
+#is mediacenter running
+mctrue = $(pgrep -c "mediacenter")
+if [ $mctrue -ne 0 ]; then
+       xbmc-send --action="UpdateLocalAddons"
        # let the db work for a bit
        sleep 2
-       kodipath=/home/osmc/.kodi/userdata
-       addonpath=/home/osmc/.kodi/addons
-       pkgpath=$addonpath/packages
-       dbpath=$kodipath/Database
-       sqlite3 $dbpath/Addons33.db "UPDATE installed SET enabled = 1 WHERE addonID = 'plugin.program.x11-launcher'"
+       xbmc-send --action="EnableAddon(plugin.program.x11-launcher)"
        sleep 2
        xbmc-send -a "UpdateLocalAddons"
        sleep 2
