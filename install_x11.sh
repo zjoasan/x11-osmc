@@ -25,7 +25,7 @@ sudo apt-get update 2>&1 | dialog --title "Updating package database..." --infob
 dialog --title "Installing X11, LXDE-core and Chromium" --infobox "\nThise will take some time so please wait...\n" 11 70
 
 sudo apt-get -y install lxde-core xserver-xorg xinit fbi libinput-dev xwit xdotool x11-utils xvkbd zenity xterm
-butrue = $(lsb_release -d | grep -v grep | grep -c "buster")
+butrue=$(lsb_release -d | grep -v grep | grep -c "buster")
 if [ $butrue -ne 0 ]; then
        sudo apt-get install chromium-common chromium
 else
@@ -55,7 +55,7 @@ sudo rm /usr/share/xsessions/kodi.desktop
 sudo ln /usr/splash.png /etc/alternatives/desktop-background 2>&1
 sudo chmod 777 /etc/alternatives/desktop-background 2>&1
 #is mediacenter running
-mctrue = $(pgrep -c "mediacenter")
+mctrue=$(pgrep -c "mediacenter")
 if [ $mctrue -ne 0 ]; then
        xbmc-send --action="UpdateLocalAddons"
        # let the db work for a bit
@@ -68,7 +68,7 @@ fi
 
 dialog --title "Installation finished!" --msgbox "\nThank you for using my installer\n" 11 70
 
-lidmtrue = $(dpkg -s lightdm | grep -c "Status: install ok installed")
+lidmtrue=$(dpkg -s lightdm | grep -c "Status: install ok installed")
 if [ $lidmtrue -ne 0 ]; then
        sudo systemctl stop lightdm
        sudo systemctl disable lightdm
