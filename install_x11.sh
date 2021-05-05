@@ -25,7 +25,8 @@ sudo apt-get update 2>&1 | dialog --title "Updating package database..." --infob
 dialog --title "Installing X11, LXDE-core and Chromium" --infobox "\nThise will take some time so please wait...\n" 11 70
 
 sudo apt-get -y install lxde-core xserver-xorg xinit fbi libinput-dev xwit xdotool x11-utils xvkbd zenity xterm
-if (( $(lsb_release -d | grep -v grep | grep -c "buster") > 0 )); then
+butrue = $(lsb_release -d | grep -v grep | grep -c "buster")
+if [ $butrue -ne 0 ]; then
        sudo apt-get install chromium-common chromium
 else
        wget http://launchpadlibrarian.net/380369885/chromium-codecs-ffmpeg-extra_68.0.3440.75-0ubuntu0.16.04.1_armhf.deb
@@ -70,7 +71,8 @@ fi
 
 dialog --title "Installation finished!" --msgbox "\nThank you for using my installer\n" 11 70
 
-if (( $(dpkg -s lightdm | grep -c "Status: install ok installed") > 0 )); then
+lidmtrue = $(dpkg -s lightdm | grep -c "Status: install ok installed")
+if [ $lidmtrue -ne 0 ]; then
        sudo systemctl stop lightdm
        sudo systemctl disable lightdm
 fi
