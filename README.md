@@ -1,4 +1,5 @@
 # x11-osmc
+Rebuilding this to be a Kodi addon, that runs install at firsttime, depending on hardware makeing it an option to switch between Kodi and X (instead of killing Kodi every time X starts)
 Installing X11, xTerm, Chromium and a virtual mouse and keyboard, controlled via the official OSMC-remote.
 
 * Arrow-keys controlls the pointer.
