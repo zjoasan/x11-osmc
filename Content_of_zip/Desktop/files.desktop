@@ -1,9 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Type=Application
-Icon=system-file-manager
-Name=My Folder Shortcut
-Exec=pcmanfm /home/osmc
- 
-Comment[en_US]=
-
