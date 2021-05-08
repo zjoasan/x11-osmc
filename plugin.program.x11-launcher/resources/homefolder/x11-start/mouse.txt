@@ -1,0 +1,52 @@
+<!-- Controlando o MOUSE via OSMC-remote with XWIT -->
+
+  <!-- Keybinding for MOUSE CONTROL LEFT-->
+  <keybind key="Left">
+   <action name="Execute">
+         <command>xwit -root -rwarp -5 0</command>
+   </action>
+  </keybind>
+
+  <!-- Keybinding for MOUSE CONTROL RIGHT-->
+  <keybind key="Right">
+   <action name="Execute">
+         <command>xwit -root -rwarp 5 0</command>
+   </action>
+  </keybind>
+
+  <!-- Keybinding for MOUSE CONTROL UP-->
+  <keybind key="Up">
+   <action name="Execute">
+         <command>xwit -root -rwarp 0 -5</command>
+   </action>
+  </keybind>
+
+  <!-- Keybinding for MOUSE CONTROL DOWN-->
+
+  <keybind key="Down">
+   <action name="Execute">
+            <command>xwit -root -rwarp 0 5</command>
+   </action>
+  </keybind>
+
+  <!-- Keybinding for c for MOUSE CONTROL RIGHT CLICK-->
+  <keybind key="Cancel">
+   <action name="Execute">
+         <command>xdotool click 3</command>
+   </action>
+  </keybind>
+
+  <!-- Keybinding for MOUSE CONTROL LEFT CLICK-->
+  <keybind key="XF86AudioPlay">
+   <action name="Execute">
+         <command>xdotool click 1</command>
+   </action>
+  </keybind>
+  <!-- Keybinding for i CONTROL Xvkbd-->
+  <keybind key="Home">
+   <action name="Execute">
+         <command>~/x11-start/virtualkeyboard-toogle.sh</command>
+   </action>
+  </keybind>
+
+  <!-- CONROLE DO MOUSE COMUM -->

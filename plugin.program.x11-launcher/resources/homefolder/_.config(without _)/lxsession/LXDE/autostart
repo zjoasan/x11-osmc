@@ -1,0 +1,5 @@
+@lxpanel --profile LXDE
+@pcmanfm --desktop --profile LXDE
+@xscreensaver -no-splash
+@/home/osmc/x11-start/vmkd-switcher.sh
+

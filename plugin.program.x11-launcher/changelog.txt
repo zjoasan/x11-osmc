@@ -1,0 +1,2 @@
+0.0.2 Initial Aurora Launcher ripped from RetroPie launcher plugin
+0.0.3 Addon updated for Matrix
