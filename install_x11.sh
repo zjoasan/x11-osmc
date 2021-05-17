@@ -46,7 +46,7 @@ else
 fi
 dialog --title "Download and install" --infobox "\nDownloading launcher and installing\n" 11 70
 
-wget -q https://github.com/zjoasan/x11-osmc/raw/master/install_x11_18.zip 2>&1
+wget -q https://github.com/zjoasan/x11-osmc/raw/Leia/install_x11.zip 2>&1
 unzip -q -o install_x11_18.zip 2>&1
 chmod +x /home/osmc/x11-start/x_init.sh 2>&1
 chmod +x /home/osmc/x11-start/xstart.sh 2>&1
