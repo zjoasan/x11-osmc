@@ -1,16 +1,20 @@
 #!/bin/bash
-#some error logging
-#exec 3>&1 4>&2
-#trap 'exec 2>&4 1>&3' 0 1 2 3
-#exec 1>install_x11_log.txt 2>&1
-#will be remarked after it's working
-
-if [ "$(id -u)" != "1000" ]; then
-       echo
-       echo "This script must be run as osmc user." 1>&2
-       echo
-       exit 1
+INFOOSMC=$(cat /proc/cmdline | grep osmcdev)
+if [[ $INFOOSMC == *"vero3"* ]]; then
+        OSMCBOX="vero3"
+elif [[ $INFOOSMC == *"rbp2"* ]]; then
+        OSMCBOX="rbp2"
+else
+        echo "Can't identify osmc box"
+        exit
 fi
+if [ "$(id -u)" != "1000" ]; then
+	echo
+	echo "This script must be run as osmc user." 1>&2
+	echo
+	exit 1
+fi
+
 #Set UTF-8; e.g. "en_US.UTF-8" or "de_DE.UTF-8":
 export LANGUAGE="en_US.UTF-8"
 export LANG="en_US.UTF-8"
@@ -42,8 +46,8 @@ else
 fi
 dialog --title "Download and install" --infobox "\nDownloading launcher and installing\n" 11 70
 
-wget -q https://github.com/zjoasan/x11-osmc/raw/master/install_x11.zip 2>&1
-unzip -q -o install_x11.zip 2>&1
+wget -q https://github.com/zjoasan/x11-osmc/raw/master/install_x11_18.zip 2>&1
+unzip -q -o install_x11_18.zip 2>&1
 chmod +x /home/osmc/x11-start/x_init.sh 2>&1
 chmod +x /home/osmc/x11-start/xstart.sh 2>&1
 chmod +x /home/osmc/x11-start/virtualkeyboard-toogle.sh 2>&1
@@ -54,16 +58,16 @@ sudo rm /usr/share/xsessions/kodi.desktop
 
 sudo ln /usr/splash.png /etc/alternatives/desktop-background 2>&1
 sudo chmod 777 /etc/alternatives/desktop-background 2>&1
-#is mediacenter running
+
 mctrue=$(pgrep -c "mediacenter")
 if [ $mctrue -ne 0 ]; then
-       xbmc-send --action="UpdateLocalAddons"
-       # let the db work for a bit
-       sleep 2
-       xbmc-send --action="EnableAddon(plugin.program.x11-launcher)"
-       sleep 2
-       xbmc-send -a "UpdateLocalAddons"
-       sleep 2
+        xbmc-send -a "UpdateLocalAddons"
+	sleep 4
+	sudo systemctl stop mediacenter
+	sleep 4
+	sqlite3 /home/osmc/.kodi/userdata/Database/Addons27.db "UPDATE installed SET enabled = 1 WHERE addonID = 'plugin.program.x11-launcher'"
+	sleep 4
+	sudo systemctl start mediacenter
 fi
 
 dialog --title "Installation finished!" --msgbox "\nThank you for using my installer\n" 11 70
@@ -73,4 +77,6 @@ if [ $lidmtrue -ne 0 ]; then
        sudo systemctl stop lightdm
        sudo systemctl disable lightdm
 fi
+
 exit
+
