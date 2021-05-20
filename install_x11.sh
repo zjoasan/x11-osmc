@@ -1,13 +1,5 @@
 #!/bin/bash
-INFOOSMC=$(cat /proc/cmdline | grep osmcdev)
-if [[ $INFOOSMC == *"vero3"* ]]; then
-        OSMCBOX="vero3"
-elif [[ $INFOOSMC == *"rbp2"* ]]; then
-        OSMCBOX="rbp2"
-else
-        echo "Can't identify osmc box"
-        exit
-fi
+# check user before install
 if [ "$(id -u)" != "1000" ]; then
 	echo
 	echo "This script must be run as osmc user." 1>&2
