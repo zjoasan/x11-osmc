@@ -20,6 +20,7 @@ sudo apt-get update 2>&1 | dialog --title "Updating package database..." --infob
 
 dialog --title "Installing X11, LXDE-core and Chromium" --infobox "\nThise will take some time so please wait...\n" 11 70
 
+export DEBIAN_FRONTEND=noninteractive
 sudo apt-get -y install lxde-core xserver-xorg xinit fbi libinput-dev xwit xdotool x11-utils xvkbd zenity xterm
 butrue=$(lsb_release -d | grep -v grep | grep -c "buster")
 if [ $butrue -ne 0 ]; then
