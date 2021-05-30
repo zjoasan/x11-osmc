@@ -24,7 +24,7 @@ export DEBIAN_FRONTEND=noninteractive
 sudo apt-get -y install lxde-core xserver-xorg xinit fbi libinput-dev xwit xdotool x11-utils xvkbd zenity xterm
 butrue=$(lsb_release -d | grep -v grep | grep -c "buster")
 if [ $butrue -ne 0 ]; then
-       sudo apt-get install chromium-common chromium
+       sudo apt-get install chromium-common chromium chromium-sandbox
 else
        wget http://launchpadlibrarian.net/380369885/chromium-codecs-ffmpeg-extra_68.0.3440.75-0ubuntu0.16.04.1_armhf.deb
        wget http://launchpadlibrarian.net/380369879/chromium-browser_68.0.3440.75-0ubuntu0.16.04.1_armhf.deb
