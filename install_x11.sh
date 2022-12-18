@@ -25,7 +25,7 @@ sudo apt-get update 2>&1 | dialog --title "Updating package database..." --infob
 dialog --title "Installing X11, LXDE-core and Chromium" --infobox "\nThise will take some time so please wait...\n" 11 70
 
 sudo apt-get -y install lxde-core xserver-xorg xinit fbi libinput-dev xwit xdotool x11-utils xvkbd zenity xterm
-butrue=$(lsb_release -d | grep -v grep | grep -c "buster")
+butrue=$(lsb_release -d | grep -v grep | grep -c "bullseye")
 if [ $butrue -ne 0 ]; then
        sudo apt-get install chromium-common chromium chromium-sandbox
 else
