@@ -11,6 +11,7 @@ if [ "$(id -u)" != "1000" ]; then
        echo
        exit 1
 fi
+cd
 #Set UTF-8; e.g. "en_US.UTF-8" or "de_DE.UTF-8":
 export LANGUAGE="en_US.UTF-8"
 export LANG="en_US.UTF-8"
