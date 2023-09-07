@@ -17,7 +17,7 @@ Todo list:
 * Fix onscreen keyboard toogle
 
 Dream list:
-* Kodi settings for resolution chhhhange when exiting kodi, with autosensing of supported resolutions
+* Kodi settings for resolution change when exiting kodi, with autosensing of supported resolutions
 * App / url link in launcher
 * Integrate launch scripts into addon file structure
 * Switch between Kodi and X
